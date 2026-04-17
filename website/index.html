@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlossyQuote – Instant Trade Estimates</title>
+  <meta name="description" content="Get instant, professional estimates for painting, plastering, flooring, tiling and kitchen fitting. Connect with trusted local tradespeople." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8e8f0;
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: #2563eb; letter-spacing: -0.5px; }
+    .nav-logo span { color: #1a1a2e; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: #555; font-size: 0.95rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #2563eb; }
+    .nav-cta {
+      background: #2563eb; color: #fff; border: none;
+      padding: 10px 22px; border-radius: 24px;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: background .2s;
+    }
+    .nav-cta:hover { background: #1d4ed8; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+      color: #fff;
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 .highlight { color: #93c5fd; }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: #fff; color: #2563eb;
+      padding: 14px 32px; border-radius: 30px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .btn-outline {
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 14px 32px; border-radius: 30px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px; margin-top: 60px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 900; line-height: 1; }
+    .stat-label { font-size: 0.85rem; opacity: 0.75; margin-top: 4px; }
+
+    /* TRADES RIBBON */
+    .trades {
+      background: #f8faff;
+      padding: 24px;
+      text-align: center;
+      border-bottom: 1px solid #e8e8f0;
+    }
+    .trades p { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .trades-list { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .trade-chip {
+      background: #fff;
+      border: 1.5px solid #dbeafe;
+      color: #2563eb;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-tag { color: #2563eb; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .section-sub { color: #666; font-size: 1.05rem; max-width: 560px; }
+
+    /* HOW IT WORKS */
+    .how { background: #fff; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 48px; }
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 1.5px solid #e8e8f0;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .step:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); border-color: #bfdbfe; }
+    .step-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 16px;
+    }
+    .step-num {
+      font-size: 0.75rem; font-weight: 800; color: #2563eb;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 0.92rem; color: #666; }
+
+    /* FOR CUSTOMERS */
+    .customers { background: #f8faff; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    @media (max-width: 768px) { .split { grid-template-columns: 1fr; } }
+    .feature-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 12px; }
+    .check {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #2563eb; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+    .feature-list li p { font-size: 0.95rem; color: #444; }
+    .feature-list li strong { display: block; color: #1a1a2e; font-weight: 700; }
+    .mock-card {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      border-radius: 24px;
+      padding: 32px;
+      color: #fff;
+      box-shadow: 0 20px 60px rgba(37,99,235,0.3);
+    }
+    .mock-card .mock-label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .mock-card .mock-value { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; }
+    .mock-card .mock-range { font-size: 0.9rem; opacity: 0.8; margin-bottom: 24px; }
+    .mock-rows { display: flex; flex-direction: column; gap: 12px; }
+    .mock-row { display: flex; justify-content: space-between; padding: 10px 16px; background: rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.9rem; }
+
+    /* FOR PROFESSIONALS */
+    .professionals { background: #fff; }
+    .pro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 48px; }
+    .pro-card {
+      padding: 28px 24px;
+      border-radius: 16px;
+      border: 1.5px solid #e8e8f0;
+      transition: box-shadow .2s;
+    }
+    .pro-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); }
+    .pro-card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .pro-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .pro-card p { font-size: 0.88rem; color: #666; }
+
+    /* PRICING */
+    .pricing { background: #f8faff; }
+    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+    .pricing-card {
+      background: #fff;
+      border: 1.5px solid #e8e8f0;
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      transition: box-shadow .2s;
+    }
+    .pricing-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); }
+    .pricing-card.featured {
+      border-color: #2563eb;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.15);
+    }
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #2563eb; color: #fff;
+      padding: 4px 16px; border-radius: 12px;
+      font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+    }
+    .pricing-card h3 { font-size: 1rem; color: #888; font-weight: 600; margin-bottom: 12px; }
+    .price { font-size: 2.2rem; font-weight: 900; color: #1a1a2e; line-height: 1; }
+    .price span { font-size: 1rem; font-weight: 500; color: #888; }
+    .pricing-desc { font-size: 0.9rem; color: #666; margin: 12px 0 20px; }
+    .pricing-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pricing-items li { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #444; }
+    .pricing-items li::before { content: '✓'; color: #2563eb; font-weight: 700; flex-shrink: 0; }
+
+    /* CONTACT */
+    .contact { background: #1e3a8a; color: #fff; text-align: center; }
+    .contact .section-title { color: #fff; }
+    .contact .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto; }
+    .contact-cards { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+    .contact-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 28px 32px;
+      min-width: 220px;
+      text-align: center;
+      transition: background .2s;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.15); }
+    .contact-card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .contact-card h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 6px; }
+    .contact-card a { color: #93c5fd; text-decoration: none; font-size: 1rem; font-weight: 700; }
+    .contact-card a:hover { color: #fff; }
+    .contact-card p { color: rgba(255,255,255,0.65); font-size: 0.85rem; margin-top: 4px; }
+    .hours { margin-top: 40px; opacity: 0.65; font-size: 0.9rem; }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.5);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+    .footer-inner { max-width: 800px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .footer-links a:hover { color: #fff; }
+    .footer-logo { font-size: 1.2rem; font-weight: 800; color: #3b82f6; margin-bottom: 12px; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px; }
+      .hero-stats { gap: 32px; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Glossy<span>Quote</span></div>
+    <ul class="nav-links">
+      <li><a href="#customers">For Customers</a></li>
+      <li><a href="#professionals">For Professionals</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get Started</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🇬🇧 Trusted in the UK</div>
+    <h1>Instant Trade Estimates<br><span class="highlight">At Your Fingertips</span></h1>
+    <p>Get professional cost estimates for home improvement jobs in seconds. Connect customers with vetted local tradespeople.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">📱 Download the App</a>
+      <a href="#customers" class="btn-outline">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-number">5+</div><div class="stat-label">Trades Covered</div></div>
+      <div class="stat"><div class="stat-number">£2.99</div><div class="stat-label">Per Estimate</div></div>
+      <div class="stat"><div class="stat-number">24h</div><div class="stat-label">Response Time</div></div>
+    </div>
+  </section>
+
+  <!-- TRADES RIBBON -->
+  <div class="trades">
+    <p>Trades we cover</p>
+    <div class="trades-list">
+      <span class="trade-chip">🖌️ Painting &amp; Decorating</span>
+      <span class="trade-chip">🏗️ Plastering</span>
+      <span class="trade-chip">🪵 Flooring</span>
+      <span class="trade-chip">🔲 Tiling</span>
+      <span class="trade-chip">🍳 Kitchen Fitting</span>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-tag">How it works</div>
+      <h2 class="section-title">Simple, fast, and transparent</h2>
+      <p class="section-sub">Three easy steps to get your professional trade estimate.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">🏠</div>
+          <div class="step-num">Step 1</div>
+          <h3>Describe Your Job</h3>
+          <p>Select the trade, enter your room sizes or package type — takes under 60 seconds.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">⚡</div>
+          <div class="step-num">Step 2</div>
+          <h3>Get Your Estimate</h3>
+          <p>Receive an instant, AI-powered cost estimate based on current UK market rates.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🤝</div>
+          <div class="step-num">Step 3</div>
+          <h3>Connect with Pros</h3>
+          <p>Share your job with vetted local tradespeople who compete for your work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR CUSTOMERS -->
+  <section class="customers" id="customers">
+    <div class="container">
+      <div class="split">
+        <div>
+          <div class="section-tag">For Customers</div>
+          <h2 class="section-title">Know what you should pay before you ask</h2>
+          <p class="section-sub">Stop guessing and avoid being overcharged. Get accurate estimates based on your specific job.</p>
+          <ul class="feature-list">
+            <li>
+              <div class="check">✓</div>
+              <p><strong>Instant AI-Powered Estimates</strong>Accurate cost breakdowns for labour and materials in seconds.</p>
+            </li>
+            <li>
+              <div class="check">✓</div>
+              <p><strong>UK Market Pricing</strong>All prices based on current UK rates — not outdated averages.</p>
+            </li>
+            <li>
+              <div class="check">✓</div>
+              <p><strong>Post Your Job</strong>Let verified tradespeople come to you with competitive quotes.</p>
+            </li>
+            <li>
+              <div class="check">✓</div>
+              <p><strong>Just £2.99 Per Estimate</strong>Cheaper than a cup of coffee. No subscription needed.</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="mock-card">
+            <div class="mock-label">Your estimate</div>
+            <div class="mock-value">£1,200 – £1,800</div>
+            <div class="mock-range">3-bed house painting &amp; decorating</div>
+            <div class="mock-rows">
+              <div class="mock-row"><span>Labour (3 days)</span><span>£750 – £1,100</span></div>
+              <div class="mock-row"><span>Materials</span><span>£200 – £400</span></div>
+              <div class="mock-row"><span>Preparation</span><span>£150 – £300</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR PROFESSIONALS -->
+  <section class="professionals" id="professionals">
+    <div class="container">
+      <div class="section-tag">For Professionals</div>
+      <h2 class="section-title">Grow your trade business with quality leads</h2>
+      <p class="section-sub">Connect with customers who already know what they want and are ready to hire.</p>
+      <div class="pro-cards">
+        <div class="pro-card">
+          <div class="icon">🎯</div>
+          <h3>Targeted Leads</h3>
+          <p>Get leads for your specific trade in your local area. No wasted time.</p>
+        </div>
+        <div class="pro-card">
+          <div class="icon">💰</div>
+          <h3>Credit System</h3>
+          <p>Buy credits and only pay for the leads you want. Full control over your spend.</p>
+        </div>
+        <div class="pro-card">
+          <div class="icon">⭐</div>
+          <h3>Build Reputation</h3>
+          <p>Collect verified reviews and showcase your portfolio to win more jobs.</p>
+        </div>
+        <div class="pro-card">
+          <div class="icon">📊</div>
+          <h3>Performance Dashboard</h3>
+          <p>Track your leads, conversion rate, ROI, and top performing areas.</p>
+        </div>
+        <div class="pro-card">
+          <div class="icon">🗺️</div>
+          <h3>Lead Map</h3>
+          <p>See demand across your area — go where the work is.</p>
+        </div>
+        <div class="pro-card">
+          <div class="icon">👑</div>
+          <h3>Premium Subscription</h3>
+          <p>£49/month. 60 credits included + 33% cheaper leads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Simple, transparent pricing</h2>
+      <p class="section-sub">No hidden fees. Pay only for what you need.</p>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Customer Estimate</h3>
+          <div class="price">£2.99 <span>one-time</span></div>
+          <p class="pricing-desc">Get an instant estimate for any job.</p>
+          <ul class="pricing-items">
+            <li>Full cost breakdown</li>
+            <li>Labour &amp; materials</li>
+            <li>UK market rates</li>
+            <li>All trades covered</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>Starter Credits</h3>
+          <div class="price">£35 <span>28 credits</span></div>
+          <p class="pricing-desc">Perfect for tradespeople starting out.</p>
+          <ul class="pricing-items">
+            <li>28 lead credits</li>
+            <li>Local area targeting</li>
+            <li>Basic dashboard</li>
+            <li>No subscription</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <div class="featured-badge">Most Popular</div>
+          <h3>Premium Monthly</h3>
+          <div class="price">£49 <span>/month</span></div>
+          <p class="pricing-desc">For serious tradespeople growing their business.</p>
+          <ul class="pricing-items">
+            <li>60 credits per month</li>
+            <li>33% cheaper leads</li>
+            <li>7-day free trial</li>
+            <li>Full performance dashboard</li>
+            <li>Priority support</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>Premium Annual</h3>
+          <div class="price">£490 <span>/year</span></div>
+          <p class="pricing-desc">Save £98 compared to monthly.</p>
+          <ul class="pricing-items">
+            <li>60 credits per month</li>
+            <li>33% cheaper leads</li>
+            <li>2 months free</li>
+            <li>Full dashboard access</li>
+            <li>Priority support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-tag" style="color:#93c5fd;">Get in Touch</div>
+      <h2 class="section-title">We're here to help</h2>
+      <p class="section-sub">Have a question? Our friendly support team responds within 24 hours.</p>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="icon">📧</div>
+          <h3>Email</h3>
+          <a href="mailto:glossyquote@gmail.com">glossyquote@gmail.com</a>
+          <p>We reply within 24 hours</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">📞</div>
+          <h3>Phone</h3>
+          <a href="tel:07378825257">07378 825257</a>
+          <p>Call or text anytime</p>
+        </div>
+        <div class="contact-card">
+          <div class="icon">💬</div>
+          <h3>WhatsApp</h3>
+          <a href="https://wa.me/447378825257">07378 825257</a>
+          <p>Quick replies on WhatsApp</p>
+        </div>
+      </div>
+      <p class="hours">Support hours: Mon–Fri 9am–6pm &nbsp;|&nbsp; Sat 10am–4pm &nbsp;|&nbsp; Sunday Closed</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">GlossyQuote</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy-choices.html">Privacy Choices</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p>&copy; 2026 GlossyQuote. All rights reserved. Registered in England &amp; Wales.</p>
+      <p style="margin-top:8px;">GlossyQuote is a trading name. All prices are estimates only and may vary based on location and job specifics.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

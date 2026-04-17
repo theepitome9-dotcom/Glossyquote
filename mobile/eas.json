@@ -1,0 +1,48 @@
+{
+  "cli": {
+    "version": "16.17.4"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_VIBECODE_REVENUECAT_TEST_KEY": "test_naxZYUumZgdalRVvAOoBjgpBaTP",
+        "EXPO_PUBLIC_DEMO_ACCOUNT_PASSWORD": "GlossyReview2024!",
+        "EXPO_TOKEN": "EcZgaU4qnve36-EAYMUCdl-EIKPGqsTq8kTd5xHp",
+        "EXPO_PUBLIC_DEMO_ACCOUNT_EMAIL": "reviewer@glossyquotes.com",
+        "EXPO_PUBLIC_INTERNAL_API_SECRET": "261338735034c6d41e4a08c52e2d4ce0e595898c29b6caaa8dbb1d626764f110",
+        "EXPO_PUBLIC_SUPABASE_URL": "https://vbtmxyuxjuqzfbdmjgcb.supabase.co",
+        "BACKEND_URL": "https://fruited-potion.vibecode.run",
+        "EXPO_PUBLIC_API_URL": "https://vbtmxyuxjuqzfbdmjgcb.supabase.co/functions/v1",
+        "EXPO_PUBLIC_BACKEND_URL": "https://fruited-potion.vibecode.run",
+        "EXPO_PUBLIC_EXPO_NO_CAPABILITY_SYNC": "1",
+        "EXPO_PUBLIC_VIBECODE_REVENUECAT_APPLE_KEY": "appl_FegmCZyZOjhSIuZnoOkwbPuWpPI",
+        "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZidG14eXV4anVxemZiZG1qZ2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAyOTY1NDEsImV4cCI6MjA3NTg3MjU0MX0.OAekgN6a9djPfHmBhGQvXSZcHG1y5seydHFeWXQt4Gk",
+        "EXPO_PUBLIC_VIBECODE_BACKEND_URL": "https://fruited-potion.vibecode.run",
+        "EXPO_NO_CAPABILITY_SYNC": "1"
+      },
+      "ios": {
+        "distribution": "store"
+      },
+      "android": {
+        "distribution": "store"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "ascAppId": "6757966263"
+      }
+    }
+  }
+}

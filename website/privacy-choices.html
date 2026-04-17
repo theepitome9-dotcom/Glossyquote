@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Choices – GlossyQuote</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1a1a2e; background: #fff; line-height: 1.7;
+    }
+    nav {
+      background: #fff; border-bottom: 1px solid #e8e8f0;
+      padding: 0 24px; display: flex; align-items: center;
+      justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: #2563eb; text-decoration: none; }
+    .nav-logo span { color: #1a1a2e; }
+    nav a.back { color: #555; text-decoration: none; font-size: 0.9rem; }
+    nav a.back:hover { color: #2563eb; }
+    .page-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: #fff; padding: 60px 24px 48px; text-align: center;
+    }
+    .page-header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
+    .page-header p { opacity: 0.8; font-size: 0.95rem; }
+    .content { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+    h2 { font-size: 1.2rem; font-weight: 800; color: #1e3a8a; margin: 36px 0 12px; padding-bottom: 8px; border-bottom: 2px solid #dbeafe; }
+    p { color: #444; margin-bottom: 12px; font-size: 0.97rem; }
+    ul { margin: 8px 0 12px 20px; }
+    li { color: #444; margin-bottom: 6px; font-size: 0.97rem; }
+    .choice-card {
+      border: 1.5px solid #e8e8f0; border-radius: 16px;
+      padding: 24px 28px; margin-bottom: 20px;
+      transition: box-shadow .2s;
+    }
+    .choice-card:hover { box-shadow: 0 4px 20px rgba(37,99,235,0.08); }
+    .choice-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .choice-card .icon { font-size: 1.4rem; }
+    .choice-card p { margin-bottom: 12px; }
+    .choice-card .action {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #eff6ff; color: #2563eb;
+      padding: 8px 16px; border-radius: 20px;
+      font-size: 0.88rem; font-weight: 600;
+      text-decoration: none;
+    }
+    .choice-card .action:hover { background: #dbeafe; }
+    a { color: #2563eb; }
+    footer {
+      background: #0f172a; color: rgba(255,255,255,0.5);
+      padding: 32px 24px; text-align: center; font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+    .footer-links { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Glossy<span>Quote</span></a>
+    <a href="index.html" class="back">← Back to Home</a>
+  </nav>
+
+  <div class="page-header">
+    <h1>Privacy Choices</h1>
+    <p>Last updated: 17 April 2026</p>
+  </div>
+
+  <div class="content">
+
+    <p>At GlossyQuote, we believe you should have control over your personal data. This page explains the choices available to you and how to exercise them.</p>
+
+    <h2>Your Privacy Options</h2>
+
+    <div class="choice-card">
+      <h3><span class="icon">📤</span> Export Your Data</h3>
+      <p>Download a copy of all personal data we hold about you, including your profile, estimates, and activity history. Exported as a JSON file.</p>
+      <a href="#" class="action">In-app: Profile → Export My Data</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">🗑️</span> Delete Your Account</h3>
+      <p>Close your account and request deletion of your personal data. We will delete your data within 30 days, except where we are required to retain it for legal purposes (e.g. transaction records for 7 years).</p>
+      <a href="#" class="action">In-app: Profile → Close Account</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">🔔</span> Push Notifications</h3>
+      <p>Control which notifications you receive — new leads, messages, and account alerts. You can turn off all notifications or customise by type.</p>
+      <a href="#" class="action">In-app: Settings → Notifications</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">📍</span> Location Data</h3>
+      <p>We use your approximate location (postcode/region) to show relevant local tradespeople and leads. You can deny or revoke location access at any time from your device settings without losing access to the app.</p>
+      <a href="#" class="action">Device: Settings → GlossyQuote → Location</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">✏️</span> Correct Your Data</h3>
+      <p>Update your name, email, phone number, or other profile details directly within the app, or contact us and we will correct any inaccurate information.</p>
+      <a href="#" class="action">In-app: Profile → Edit Profile</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">🚫</span> Object to Processing</h3>
+      <p>You have the right to object to certain types of data processing, including processing based on our legitimate interests. Contact us to discuss your specific situation.</p>
+      <a href="mailto:glossyquote@gmail.com" class="action">📧 glossyquote@gmail.com</a>
+    </div>
+
+    <div class="choice-card">
+      <h3><span class="icon">📵</span> Marketing Communications</h3>
+      <p>If you have opted in to marketing emails or SMS messages, you can opt out at any time by clicking "Unsubscribe" in any marketing email or by contacting us directly.</p>
+      <a href="mailto:glossyquote@gmail.com" class="action">Contact us to opt out</a>
+    </div>
+
+    <h2>Cookies</h2>
+    <p>Our mobile app does not use cookies. Our website (glossyquote.com) only uses essential cookies required for basic functionality such as navigation. We do not currently use advertising, tracking, or analytics cookies.</p>
+    <p>If this changes in the future, we will update this page and ask for your consent where required.</p>
+
+    <h2>Do Not Sell or Share My Personal Information</h2>
+    <p>We do not sell your personal information to third parties. We do not share your personal information for cross-context behavioural advertising. This section is provided for compliance with applicable US state privacy laws (e.g. California CCPA) where applicable to our users.</p>
+
+    <h2>Contact Us About Privacy</h2>
+    <p>To exercise any of your rights or if you have questions about how we handle your data:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:glossyquote@gmail.com">glossyquote@gmail.com</a></li>
+      <li><strong>Phone / WhatsApp:</strong> 07378 825257</li>
+    </ul>
+    <p>We aim to respond to all privacy requests within 30 days. If you are unsatisfied with our response, you may lodge a complaint with the <strong>Information Commissioner's Office (ICO)</strong> at <a href="https://ico.org.uk" target="_blank">ico.org.uk</a>.</p>
+
+    <p style="margin-top:32px;">For full details on how we collect and use your data, see our <a href="privacy.html">Privacy Policy</a>.</p>
+
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <p>&copy; 2026 GlossyQuote. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

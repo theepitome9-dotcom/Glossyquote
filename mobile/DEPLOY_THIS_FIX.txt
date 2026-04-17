@@ -1,0 +1,45 @@
+========================================
+🔥 URGENT: WEBHOOK FIX READY TO DEPLOY
+========================================
+
+PROBLEM FOUND:
+--------------
+The webhook is crashing with this error:
+"SubtleCryptoProvider cannot be used in a synchronous context"
+
+This is why customers pay but don't get their estimates!
+
+FIX APPLIED:
+-----------
+Changed line 25 in stripe-webhook/index.ts from:
+  const event = stripe.webhooks.constructEvent(...)
+To:
+  const event = await stripe.webhooks.constructEventAsync(...)
+
+STATUS: ✅ Code fixed, ready to deploy
+
+DEPLOY NOW:
+-----------
+Option 1 - Supabase Dashboard (Easiest):
+  1. Go to: https://app.supabase.com/project/vbtmxyuxjuqzfbdmjgcb/functions
+  2. Click "stripe-webhook"
+  3. Click "Deploy New Version"
+  4. Copy code from: supabase/functions/stripe-webhook/index.ts
+  5. Click "Deploy"
+  
+Option 2 - Command Line:
+  supabase functions deploy stripe-webhook --no-verify-jwt
+
+TESTING AFTER DEPLOY:
+--------------------
+1. Make a test payment in the app
+2. Check Supabase logs - should see:
+   ✅ "Webhook event received"
+   ✅ "Estimate marked as paid"
+   ❌ NO MORE SubtleCrypto errors!
+
+RESULT:
+-------
+Customers will now see their estimates immediately after payment! 🎉
+
+See FIX_WEBHOOK_NOW.md for detailed instructions.
