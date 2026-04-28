@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Post Your Project — GlossyQuote</title>
+<meta name="description" content="Post your project free on GlossyQuote. Verified UK tradespeople will come to you with competitive quotes." />
+<link rel="icon" href="/favicon.ico" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f5f7fa;
+    color: #1a2332;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; color: #fff; text-decoration: none; }
+  .back-link { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; }
+  .back-link:hover { color: #fff; }
+
+  .container {
+    max-width: 720px;
+    margin: 32px auto;
+    padding: 0 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #1a2332;
+  }
+  .lead {
+    color: #5a6878;
+    margin-bottom: 28px;
+    font-size: 1rem;
+  }
+  .field {
+    margin-bottom: 18px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1a2332;
+    font-size: 0.92rem;
+  }
+  .req { color: #e63946; }
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #d6dde6;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fafbfc;
+    color: #1a2332;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2d7a3e;
+    background: #fff;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 520px) {
+    .row { grid-template-columns: 1fr; }
+    .card { padding: 24px 20px; }
+    h1 { font-size: 1.5rem; }
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2d7a3e 0%, #3a9550 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(45,122,62,0.3);
+  }
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .help {
+    font-size: 0.82rem;
+    color: #7a8898;
+    margin-top: 4px;
+  }
+  .alert {
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    display: none;
+  }
+  .alert.error {
+    background: #fee5e7;
+    color: #b81e2d;
+    border: 1px solid #f5b8be;
+  }
+  .success-card {
+    text-align: center;
+    padding: 40px 24px;
+    display: none;
+  }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #2d7a3e 0%, #3a9550 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2.2rem;
+    color: #fff;
+  }
+  .success-card h2 { font-size: 1.6rem; margin-bottom: 10px; color: #1a2332; }
+  .success-card p { color: #5a6878; margin-bottom: 24px; }
+  .home-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #1e3a5f;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #e8f4ec;
+    color: #2d7a3e;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">GlossyQuote</a>
+    <a href="/" class="back-link">← Back</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="card" id="form-card">
+    <h1>Post Your Project Free</h1>
+    <p class="lead">Tell us what you need done. Verified UK tradespeople will come to you with competitive quotes.</p>
+
+    <div class="badge-row">
+      <span class="badge">✓ Free to post</span>
+      <span class="badge">✓ Vetted pros</span>
+      <span class="badge">✓ No obligation</span>
+    </div>
+
+    <div class="alert error" id="error-alert"></div>
+
+    <form id="project-form">
+      <div class="field">
+        <label for="trade">Trade required <span class="req">*</span></label>
+        <select id="trade" name="trade" required>
+          <option value="">Select a trade…</option>
+          <option value="Painting & Decorating">Painting &amp; Decorating</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Electrical">Electrical</option>
+          <option value="Carpentry">Carpentry</option>
+          <option value="Roofing">Roofing</option>
+          <option value="Plastering">Plastering</option>
+          <option value="Flooring">Flooring</option>
+          <option value="Tiling">Tiling</option>
+          <option value="Bricklaying">Bricklaying</option>
+          <option value="Gardening & Landscaping">Gardening &amp; Landscaping</option>
+          <option value="Heating & Boilers">Heating &amp; Boilers</option>
+          <option value="Kitchen Fitting">Kitchen Fitting</option>
+          <option value="Bathroom Fitting">Bathroom Fitting</option>
+          <option value="Windows & Doors">Windows &amp; Doors</option>
+          <option value="General Builder">General Builder</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="description">Describe the job <span class="req">*</span></label>
+        <textarea id="description" name="description" required maxlength="2000" placeholder="e.g. Repaint a 3-bed semi, two coats, walls and ceilings. Approx 80m² in total. Looking to start within 2 weeks."></textarea>
+        <div class="help">Be specific — the more detail you give, the more accurate the quotes.</div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="postcode">Postcode</label>
+          <input type="text" id="postcode" name="postcode" maxlength="20" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" />
+        </div>
+        <div class="field">
+          <label for="customerName">Your name <span class="req">*</span></label>
+          <input type="text" id="customerName" name="customerName" required maxlength="100" autocomplete="name" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="customerPhone">Phone <span class="req">*</span></label>
+          <input type="tel" id="customerPhone" name="customerPhone" required maxlength="30" autocomplete="tel" placeholder="07…" />
+        </div>
+        <div class="field">
+          <label for="customerEmail">Email</label>
+          <input type="email" id="customerEmail" name="customerEmail" maxlength="200" autocomplete="email" placeholder="optional" />
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">📋 Post My Project</button>
+      <p class="help" style="text-align:center;margin-top:12px;">By posting, you agree to be contacted by verified GlossyQuote tradespeople about this job.</p>
+    </form>
+  </div>
+
+  <div class="card success-card" id="success-card">
+    <div class="success-icon">✓</div>
+    <h2>Project posted!</h2>
+    <p>Verified tradespeople in your area will be in touch with quotes shortly.</p>
+    <a href="/" class="home-btn">Back to Home</a>
+  </div>
+</div>
+
+<script>
+  const BACKEND_URL = 'https://preview-btdatskhuneq.dev.vibecode.run';
+
+  const form = document.getElementById('project-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorAlert = document.getElementById('error-alert');
+  const formCard = document.getElementById('form-card');
+  const successCard = document.getElementById('success-card');
+
+  function showError(msg) {
+    errorAlert.textContent = msg;
+    errorAlert.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorAlert.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Posting…';
+
+    const payload = {
+      tradeCategory: document.getElementById('trade').value,
+      description: document.getElementById('description').value.trim(),
+      postcode: document.getElementById('postcode').value.trim(),
+      customerName: document.getElementById('customerName').value.trim(),
+      customerPhone: document.getElementById('customerPhone').value.trim(),
+      customerEmail: document.getElementById('customerEmail').value.trim() || null,
+    };
+
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/jobs/public-submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to post project. Please try again.');
+      }
+
+      formCard.style.display = 'none';
+      successCard.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      showError(err.message || 'Something went wrong. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '📋 Post My Project';
+    }
+  });
+</script>
+
+</body>
+</html>

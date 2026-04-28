@@ -1,0 +1,62 @@
+{
+  "name": "GlossyQuote – Instant Trade Estimates",
+  "short_name": "GlossyQuote",
+  "description": "Get instant, professional estimates for home improvement trades and connect with vetted local tradespeople.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#22c55e",
+  "background_color": "#ffffff",
+  "categories": ["productivity", "business"],
+  "icons": [
+    {
+      "src": "/glossy-icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/glossy-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'%3E%3Crect fill='%2322c55e' width='540' height='720'/%3E%3Ctext x='270' y='360' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='72' font-weight='900' fill='white'%3EGlossyQuote%3C/text%3E%3C/svg%3E",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Get an Estimate",
+      "short_name": "Estimate",
+      "description": "Get an instant trade estimate",
+      "url": "/?mode=estimate",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2322c55e' width='96' height='96'/%3E%3Ctext x='48' y='48' dominant-baseline='middle' text-anchor='middle' font-size='60'%3E%F0%9F%92%B7%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Find Local Tradespeople",
+      "short_name": "Pros",
+      "description": "Connect with vetted local tradespeople",
+      "url": "/?mode=professionals",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect fill='%2322c55e' width='96' height='96'/%3E%3Ctext x='48' y='48' dominant-baseline='middle' text-anchor='middle' font-size='60'%3E%F0%9F%A4%9D%3C/text%3E%3C/svg%3E",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
