@@ -4,45 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GlossyQuote – Instant Trade Estimates</title>
-  <meta name="description" content="Get instant, professional estimates for painting, plastering, flooring, tiling and kitchen fitting. Connect with trusted local tradespeople." />
+  <meta name="description" content="Get instant, professional estimates for painting, plastering, flooring, tiling and kitchen fitting. Connect with trusted local tradespeople across the UK." />
+  <meta name="theme-color" content="#22c55e" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GlossyQuote" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/glossy-icon.jpg" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #1a1a2e;
+      color: #0f172a;
       background: #fff;
       line-height: 1.6;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e8e8f0;
-      padding: 0 24px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(34,197,94,0.12);
+      padding: 0 28px;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      height: 68px;
+      box-shadow: 0 1px 24px rgba(34,197,94,0.06);
     }
-    .nav-logo { font-size: 1.4rem; font-weight: 800; color: #2563eb; letter-spacing: -0.5px; }
-    .nav-logo span { color: #1a1a2e; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 42px; width: 42px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 2px 12px rgba(34,197,94,0.25);
+    }
+    .nav-logo-text {
+      font-size: 1.45rem; font-weight: 900; letter-spacing: -0.5px;
+      background: linear-gradient(180deg,
+        #ffe066 0%,
+        #f5c518 18%,
+        #d4960a 38%,
+        #ffd700 52%,
+        #c8860b 68%,
+        #f5c518 82%,
+        #ffe066 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 2px rgba(180,120,0,0.35));
+      text-shadow: none;
+    }
     .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { text-decoration: none; color: #555; font-size: 0.95rem; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover { color: #2563eb; }
+    .nav-links a { text-decoration: none; color: #475569; font-size: 0.95rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #22c55e; }
     .nav-cta {
-      background: #2563eb; color: #fff; border: none;
-      padding: 10px 22px; border-radius: 24px;
-      font-size: 0.9rem; font-weight: 600; cursor: pointer;
-      text-decoration: none; transition: background .2s;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff; border: none;
+      padding: 10px 24px; border-radius: 24px;
+      font-size: 0.9rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; transition: opacity .2s, transform .15s;
+      box-shadow: 0 2px 12px rgba(34,197,94,0.3);
     }
-    .nav-cta:hover { background: #1d4ed8; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+      background: linear-gradient(145deg, #052e16 0%, #14532d 35%, #15803d 65%, #22c55e 100%);
       color: #fff;
-      padding: 100px 24px 80px;
+      padding: 110px 28px 90px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -50,485 +86,820 @@
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M50 50v-10h-4v10H36v4h10v10h4V54h10v-4H50zM50 0v-10h-4V0H36v4h10v10h4V4h10V0H50zM0 50v-10H-4v10H-14v4h10v10h4V54h10v-4H0zM0 0v-10H-4V0H-14v4h10v10h4V4h10V0H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+      color: #bbf7d0;
       padding: 6px 16px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       letter-spacing: 0.5px;
     }
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
       font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: -1px;
+      line-height: 1.08;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
     }
-    .hero h1 .highlight { color: #93c5fd; }
+    .hero h1 .highlight { color: #86efac; }
     .hero p {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto 40px;
+      opacity: 0.88;
+      max-width: 580px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
     }
-    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
     .btn-primary {
-      background: #fff; color: #2563eb;
-      padding: 14px 32px; border-radius: 30px;
+      background: #fff; color: #15803d;
+      padding: 15px 34px; border-radius: 32px;
       font-weight: 700; font-size: 1rem;
       text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
       transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,0.25); }
     .btn-outline {
-      background: transparent; color: #fff;
-      border: 2px solid rgba(255,255,255,0.5);
-      padding: 14px 32px; border-radius: 30px;
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 15px 34px; border-radius: 32px;
       font-weight: 700; font-size: 1rem;
       text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
       transition: border-color .2s, background .2s;
+      backdrop-filter: blur(8px);
     }
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.18); }
+
+    /* App Store badge */
+    .appstore-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #000;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 10px 20px; border-radius: 14px;
+      font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .appstore-badge svg { flex-shrink: 0; }
+    .appstore-badge:hover { opacity: 0.85; }
+    .appstore-badge .badge-sub { font-size: 0.7rem; opacity: 0.7; font-weight: 400; display: block; line-height: 1; }
+    .appstore-badge .badge-main { font-size: 1rem; font-weight: 700; }
+
     .hero-stats {
-      display: flex; justify-content: center; gap: 48px; margin-top: 60px;
+      display: flex; justify-content: center; gap: 48px;
       flex-wrap: wrap;
     }
     .stat { text-align: center; }
-    .stat-number { font-size: 2rem; font-weight: 900; line-height: 1; }
-    .stat-label { font-size: 0.85rem; opacity: 0.75; margin-top: 4px; }
+    .stat-number { font-size: 2.2rem; font-weight: 900; line-height: 1; }
+    .stat-label { font-size: 0.82rem; opacity: 0.7; margin-top: 5px; font-weight: 500; letter-spacing: 0.3px; }
 
-    /* TRADES RIBBON */
+    /* ── TRADES RIBBON ── */
     .trades {
-      background: #f8faff;
-      padding: 24px;
+      background: #f0fdf4;
+      padding: 20px 28px;
       text-align: center;
-      border-bottom: 1px solid #e8e8f0;
+      border-bottom: 1px solid #dcfce7;
     }
-    .trades p { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .trades-list { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .trades p { font-size: 0.78rem; color: #6b7280; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; font-weight: 600; }
+    .trades-list { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .trade-chip {
       background: #fff;
-      border: 1.5px solid #dbeafe;
-      color: #2563eb;
-      padding: 6px 16px;
+      border: 1.5px solid #bbf7d0;
+      color: #15803d;
+      padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       font-weight: 600;
+      transition: background .15s, border-color .15s;
     }
+    .trade-chip:hover { background: #dcfce7; border-color: #22c55e; }
 
-    /* SECTIONS */
-    section { padding: 80px 24px; }
+    /* ── SECTIONS ── */
+    section { padding: 88px 28px; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-tag { color: #2563eb; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
-    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.5px; margin-bottom: 16px; }
-    .section-sub { color: #666; font-size: 1.05rem; max-width: 560px; }
+    .section-tag { color: #16a34a; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.8px; margin-bottom: 16px; color: #0f172a; }
+    .section-sub { color: #64748b; font-size: 1.05rem; max-width: 560px; }
 
-    /* HOW IT WORKS */
+    /* ── HOW IT WORKS ── */
     .how { background: #fff; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; margin-top: 52px; }
     .step {
       text-align: center;
-      padding: 32px 24px;
-      border-radius: 16px;
-      border: 1.5px solid #e8e8f0;
-      transition: box-shadow .2s, border-color .2s;
+      padding: 36px 24px;
+      border-radius: 20px;
+      border: 1.5px solid #e2e8f0;
+      transition: box-shadow .25s, border-color .25s, transform .2s;
+      background: #fff;
     }
-    .step:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); border-color: #bfdbfe; }
+    .step:hover { box-shadow: 0 12px 40px rgba(34,197,94,0.12); border-color: #86efac; transform: translateY(-3px); }
     .step-icon {
-      width: 56px; height: 56px;
-      background: linear-gradient(135deg, #2563eb, #3b82f6);
-      border-radius: 16px;
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-radius: 18px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      margin: 0 auto 16px;
+      font-size: 1.7rem;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(34,197,94,0.25);
     }
-    .step-num {
-      font-size: 0.75rem; font-weight: 800; color: #2563eb;
-      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
-    }
-    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 0.92rem; color: #666; }
+    .step-num { font-size: 0.72rem; font-weight: 800; color: #22c55e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .step h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; color: #0f172a; }
+    .step p { font-size: 0.9rem; color: #64748b; }
 
-    /* FOR CUSTOMERS */
-    .customers { background: #f8faff; }
+    /* ── FOR CUSTOMERS ── */
+    .customers { background: #f0fdf4; }
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    @media (max-width: 768px) { .split { grid-template-columns: 1fr; } }
-    .feature-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 16px; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 12px; }
+    @media (max-width: 768px) { .split { grid-template-columns: 1fr; gap: 40px; } }
+    .feature-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 14px; }
     .check {
-      width: 24px; height: 24px; border-radius: 50%;
-      background: #2563eb; color: #fff;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+      font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+      box-shadow: 0 2px 8px rgba(34,197,94,0.3);
     }
-    .feature-list li p { font-size: 0.95rem; color: #444; }
-    .feature-list li strong { display: block; color: #1a1a2e; font-weight: 700; }
-    .mock-card {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      border-radius: 24px;
-      padding: 32px;
-      color: #fff;
-      box-shadow: 0 20px 60px rgba(37,99,235,0.3);
-    }
-    .mock-card .mock-label { font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-    .mock-card .mock-value { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; }
-    .mock-card .mock-range { font-size: 0.9rem; opacity: 0.8; margin-bottom: 24px; }
-    .mock-rows { display: flex; flex-direction: column; gap: 12px; }
-    .mock-row { display: flex; justify-content: space-between; padding: 10px 16px; background: rgba(255,255,255,0.12); border-radius: 10px; font-size: 0.9rem; }
+    .feature-list li p { font-size: 0.95rem; color: #475569; }
+    .feature-list li strong { display: block; color: #0f172a; font-weight: 700; margin-bottom: 2px; }
 
-    /* FOR PROFESSIONALS */
-    .professionals { background: #fff; }
-    .pro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 48px; }
-    .pro-card {
+    /* Mock phone card */
+    .phone-card-wrapper { display: flex; justify-content: center; }
+    .phone-card {
+      background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 28px;
       padding: 28px 24px;
-      border-radius: 16px;
-      border: 1.5px solid #e8e8f0;
-      transition: box-shadow .2s;
+      max-width: 320px; width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
     }
-    .pro-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); }
-    .pro-card .icon { font-size: 2rem; margin-bottom: 12px; }
-    .pro-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .pro-card p { font-size: 0.88rem; color: #666; }
+    .phone-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #22c55e, #4ade80);
+    }
+    .phone-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .phone-card-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .phone-card-brand { color: #f1f5f9; font-weight: 800; font-size: 1rem; letter-spacing: -0.3px; }
+    .phone-card-brand span { color: #4ade80; }
+    .pc-label { font-size: 0.72rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 4px; }
+    .pc-value { font-size: 2.4rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: 4px; }
+    .pc-range { font-size: 0.88rem; color: #94a3b8; margin-bottom: 22px; }
+    .pc-rows { display: flex; flex-direction: column; gap: 10px; }
+    .pc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .pc-row span:first-child { color: #94a3b8; }
+    .pc-row span:last-child { color: #f1f5f9; font-weight: 600; }
+    .pc-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
+      color: #4ade80; padding: 6px 12px; border-radius: 20px;
+      font-size: 0.78rem; font-weight: 700; margin-top: 16px;
+    }
 
-    /* PRICING */
-    .pricing { background: #f8faff; }
-    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+    /* ── FOR PROFESSIONALS ── */
+    .professionals { background: #fff; }
+    .pro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-top: 52px; }
+    .pro-card {
+      padding: 30px 24px;
+      border-radius: 20px;
+      border: 1.5px solid #e2e8f0;
+      transition: box-shadow .25s, transform .2s, border-color .25s;
+      background: #fff;
+    }
+    .pro-card:hover { box-shadow: 0 12px 40px rgba(34,197,94,0.1); transform: translateY(-3px); border-color: #bbf7d0; }
+    .pro-card .icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .pro-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; color: #0f172a; }
+    .pro-card p { font-size: 0.88rem; color: #64748b; line-height: 1.6; }
+
+    /* ── PRICING ── */
+    .pricing { background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%); }
+    .pricing-tabs { display: flex; gap: 8px; margin-bottom: 40px; margin-top: 48px; justify-content: center; flex-wrap: wrap; }
+    .pricing-tab {
+      padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+      border: 1.5px solid #e2e8f0; cursor: pointer;
+      background: #fff; color: #64748b;
+      transition: all .2s;
+    }
+    .pricing-tab.active { background: #22c55e; border-color: #22c55e; color: #fff; box-shadow: 0 2px 12px rgba(34,197,94,0.3); }
+
+    .pricing-section { display: none; }
+    .pricing-section.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+
     .pricing-card {
       background: #fff;
-      border: 1.5px solid #e8e8f0;
-      border-radius: 20px;
-      padding: 32px 28px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 22px;
+      padding: 32px 26px;
       position: relative;
-      transition: box-shadow .2s;
+      transition: box-shadow .25s, transform .2s;
     }
-    .pricing-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.1); }
+    .pricing-card:hover { box-shadow: 0 12px 40px rgba(34,197,94,0.1); transform: translateY(-2px); }
     .pricing-card.featured {
-      border-color: #2563eb;
-      box-shadow: 0 8px 32px rgba(37,99,235,0.15);
+      border-color: #22c55e;
+      box-shadow: 0 8px 32px rgba(34,197,94,0.18);
+      background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%);
     }
     .featured-badge {
-      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-      background: #2563eb; color: #fff;
-      padding: 4px 16px; border-radius: 12px;
-      font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff;
+      padding: 4px 18px; border-radius: 12px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(34,197,94,0.35);
     }
-    .pricing-card h3 { font-size: 1rem; color: #888; font-weight: 600; margin-bottom: 12px; }
-    .price { font-size: 2.2rem; font-weight: 900; color: #1a1a2e; line-height: 1; }
-    .price span { font-size: 1rem; font-weight: 500; color: #888; }
-    .pricing-desc { font-size: 0.9rem; color: #666; margin: 12px 0 20px; }
-    .pricing-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .pricing-items li { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #444; }
-    .pricing-items li::before { content: '✓'; color: #2563eb; font-weight: 700; flex-shrink: 0; }
+    .pricing-card h3 { font-size: 0.85rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+    .price { font-size: 2.4rem; font-weight: 900; color: #0f172a; line-height: 1; margin-bottom: 4px; }
+    .price sup { font-size: 1.2rem; font-weight: 700; vertical-align: top; margin-top: 8px; }
+    .price-meta { font-size: 0.88rem; font-weight: 500; color: #94a3b8; margin-bottom: 8px; }
+    .pricing-desc { font-size: 0.88rem; color: #64748b; margin: 10px 0 20px; line-height: 1.6; }
+    .pricing-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .pricing-items li { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: #475569; }
+    .pricing-items li::before { content: '✓'; color: #22c55e; font-weight: 800; flex-shrink: 0; }
 
-    /* CONTACT */
-    .contact { background: #1e3a8a; color: #fff; text-align: center; }
+    .btn-pricing {
+      display: block; width: 100%; text-align: center;
+      padding: 13px 20px; border-radius: 14px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; cursor: pointer;
+      border: none; transition: all .2s;
+    }
+    .btn-pricing-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(34,197,94,0.3);
+    }
+    .btn-pricing-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(34,197,94,0.4); }
+    .btn-pricing-secondary {
+      background: #f8fafc; color: #0f172a;
+      border: 1.5px solid #e2e8f0;
+    }
+    .btn-pricing-secondary:hover { border-color: #22c55e; color: #22c55e; background: #f0fdf4; }
+
+    /* Spinner */
+    .spinner {
+      display: inline-block; width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle; margin-right: 6px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── TRUST STRIP ── */
+    .trust { background: #0f172a; padding: 48px 28px; }
+    .trust-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .trust-title { color: #f1f5f9; font-size: 1rem; font-weight: 700; margin-bottom: 28px; letter-spacing: 0.3px; opacity: 0.7; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .trust-items { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: #94a3b8; font-size: 0.92rem; font-weight: 600; }
+    .trust-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+
+    /* ── CONTACT ── */
+    .contact { background: linear-gradient(145deg, #052e16 0%, #14532d 100%); color: #fff; text-align: center; }
     .contact .section-title { color: #fff; }
-    .contact .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto; }
-    .contact-cards { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+    .contact .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto; }
+    .contact-cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
     .contact-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
       padding: 28px 32px;
       min-width: 220px;
       text-align: center;
-      transition: background .2s;
+      transition: background .2s, transform .2s;
     }
-    .contact-card:hover { background: rgba(255,255,255,0.15); }
+    .contact-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
     .contact-card .icon { font-size: 2rem; margin-bottom: 12px; }
-    .contact-card h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 6px; }
-    .contact-card a { color: #93c5fd; text-decoration: none; font-size: 1rem; font-weight: 700; }
+    .contact-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.6; margin-bottom: 8px; font-weight: 700; }
+    .contact-card a { color: #86efac; text-decoration: none; font-size: 1rem; font-weight: 700; }
     .contact-card a:hover { color: #fff; }
-    .contact-card p { color: rgba(255,255,255,0.65); font-size: 0.85rem; margin-top: 4px; }
-    .hours { margin-top: 40px; opacity: 0.65; font-size: 0.9rem; }
+    .contact-card p { color: rgba(255,255,255,0.55); font-size: 0.82rem; margin-top: 5px; }
+    .hours { margin-top: 44px; opacity: 0.55; font-size: 0.88rem; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      background: #0f172a;
-      color: rgba(255,255,255,0.5);
-      padding: 40px 24px;
+      background: #020617;
+      color: rgba(255,255,255,0.45);
+      padding: 44px 28px;
       text-align: center;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
-    .footer-inner { max-width: 800px; margin: 0 auto; }
-    .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    .footer-links a:hover { color: #fff; }
-    .footer-logo { font-size: 1.2rem; font-weight: 800; color: #3b82f6; margin-bottom: 12px; }
+    .footer-inner { max-width: 840px; margin: 0 auto; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #22c55e; }
+    .footer-logo {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      font-size: 1.25rem; font-weight: 900; margin-bottom: 16px;
+      background: linear-gradient(180deg,
+        #ffe066 0%,
+        #f5c518 18%,
+        #d4960a 38%,
+        #ffd700 52%,
+        #c8860b 68%,
+        #f5c518 82%,
+        #ffe066 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 2px rgba(180,120,0,0.4));
+    }
+    .footer-logo img {
+      height: 30px; width: 30px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
 
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: #0f172a; color: #fff;
+      padding: 12px 24px; border-radius: 14px;
+      font-size: 0.92rem; font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: transform .35s ease, opacity .35s ease;
+      opacity: 0; pointer-events: none; z-index: 9999;
+      border: 1px solid rgba(255,255,255,0.1);
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    #toast.error { border-left: 4px solid #ef4444; }
+    #toast.success { border-left: 4px solid #22c55e; }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .nav-links { display: none; }
-      .hero { padding: 60px 20px; }
-      .hero-stats { gap: 32px; }
-      section { padding: 60px 20px; }
+      .hero { padding: 70px 20px 60px; }
+      .hero-stats { gap: 28px; }
+      section { padding: 64px 20px; }
+      nav { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Glossy<span>Quote</span></div>
-    <ul class="nav-links">
-      <li><a href="#customers">For Customers</a></li>
-      <li><a href="#professionals">For Professionals</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Get Started</a>
-  </nav>
+<!-- TOAST -->
+<div id="toast"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge">🇬🇧 Trusted in the UK</div>
-    <h1>Instant Trade Estimates<br><span class="highlight">At Your Fingertips</span></h1>
-    <p>Get professional cost estimates for home improvement jobs in seconds. Connect customers with vetted local tradespeople.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">📱 Download the App</a>
-      <a href="#customers" class="btn-outline">Learn More</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-number">5+</div><div class="stat-label">Trades Covered</div></div>
-      <div class="stat"><div class="stat-number">£2.99</div><div class="stat-label">Per Estimate</div></div>
-      <div class="stat"><div class="stat-number">24h</div><div class="stat-label">Response Time</div></div>
-    </div>
-  </section>
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/glossy-icon.jpg" alt="GlossyQuote logo" />
+    <span class="nav-logo-text">GlossyQuote</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#customers">For Customers</a></li>
+    <li><a href="#professionals">For Pros</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#pricing" class="nav-cta">Get Started</a>
+</nav>
 
-  <!-- TRADES RIBBON -->
-  <div class="trades">
-    <p>Trades we cover</p>
-    <div class="trades-list">
-      <span class="trade-chip">🖌️ Painting &amp; Decorating</span>
-      <span class="trade-chip">🏗️ Plastering</span>
-      <span class="trade-chip">🪵 Flooring</span>
-      <span class="trade-chip">🔲 Tiling</span>
-      <span class="trade-chip">🍳 Kitchen Fitting</span>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">🇬🇧 &nbsp;#1 Rated Trades App in the UK</div>
+  <h1>Instant Trade Estimates<br><span class="highlight">At Your Fingertips</span></h1>
+  <p>Get AI-powered cost estimates for home improvement jobs in seconds. Connect with vetted local tradespeople across the UK.</p>
+  <div class="hero-buttons">
+    <a href="https://apps.apple.com/gb/app/glossyquote/id6741984340" target="_blank" rel="noopener" class="appstore-badge">
+      <svg width="22" height="22" viewBox="0 0 814 1000" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-42.7-145.6-109.5c-42-70.1-78.8-184.2-78.8-293.2 0-188.2 123.2-287.9 244.3-287.9 62.8 0 114.9 41 153.7 41 37.1 0 95-44.1 165.9-44.1 26.9 0 108.2 2.6 168.7 92.9zm-234.4-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"/></svg>
+      <div>
+        <span class="badge-sub">Download on the</span>
+        <span class="badge-main">App Store</span>
+      </div>
+    </a>
+    <a href="#pricing" class="btn-primary">💳 View Pricing</a>
+    <a href="#how" class="btn-outline">Learn More</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Trades Covered</div></div>
+    <div class="stat"><div class="stat-number">£2.99</div><div class="stat-label">Per Estimate</div></div>
+    <div class="stat"><div class="stat-number">60s</div><div class="stat-label">Avg. Response Time</div></div>
+    <div class="stat"><div class="stat-number">4.9★</div><div class="stat-label">App Store Rating</div></div>
+  </div>
+</section>
+
+<!-- ── TRADES RIBBON ── -->
+<div class="trades">
+  <p>10 Trades We Cover</p>
+  <div class="trades-list">
+    <span class="trade-chip">🖌️ Painting &amp; Decorating</span>
+    <span class="trade-chip">🏗️ Plastering</span>
+    <span class="trade-chip">🪵 Flooring</span>
+    <span class="trade-chip">🔧 Plumbing</span>
+    <span class="trade-chip">⚡ Electrical</span>
+    <span class="trade-chip">🔲 Tiling</span>
+    <span class="trade-chip">🪚 Carpentry</span>
+    <span class="trade-chip">🍳 Kitchen Fitting</span>
+    <span class="trade-chip">🛁 Bathroom Fitting</span>
+    <span class="trade-chip">🔨 Handyman</span>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-tag">How it works</div>
+    <h2 class="section-title">Simple, fast, and transparent</h2>
+    <p class="section-sub">Three easy steps to get your professional trade estimate.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">🏠</div>
+        <div class="step-num">Step 1</div>
+        <h3>Describe Your Job</h3>
+        <p>Select the trade, enter your room sizes or package type — takes under 60 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">⚡</div>
+        <div class="step-num">Step 2</div>
+        <h3>Get Your Estimate</h3>
+        <p>Receive an instant, AI-powered cost estimate based on current UK market rates.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">🤝</div>
+        <div class="step-num">Step 3</div>
+        <h3>Connect with Pros</h3>
+        <p>Share your job with vetted local tradespeople who compete for your work.</p>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="how">
-    <div class="container">
-      <div class="section-tag">How it works</div>
-      <h2 class="section-title">Simple, fast, and transparent</h2>
-      <p class="section-sub">Three easy steps to get your professional trade estimate.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-icon">🏠</div>
-          <div class="step-num">Step 1</div>
-          <h3>Describe Your Job</h3>
-          <p>Select the trade, enter your room sizes or package type — takes under 60 seconds.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">⚡</div>
-          <div class="step-num">Step 2</div>
-          <h3>Get Your Estimate</h3>
-          <p>Receive an instant, AI-powered cost estimate based on current UK market rates.</p>
-        </div>
-        <div class="step">
-          <div class="step-icon">🤝</div>
-          <div class="step-num">Step 3</div>
-          <h3>Connect with Pros</h3>
-          <p>Share your job with vetted local tradespeople who compete for your work.</p>
-        </div>
+<!-- ── FOR CUSTOMERS ── -->
+<section class="customers" id="customers">
+  <div class="container">
+    <div class="split">
+      <div>
+        <div class="section-tag">For Customers</div>
+        <h2 class="section-title">Know what you should pay before you ask</h2>
+        <p class="section-sub">Stop guessing and avoid being overcharged. Get accurate estimates based on your specific job.</p>
+        <ul class="feature-list">
+          <li>
+            <div class="check">✓</div>
+            <p><strong>Instant AI-Powered Estimates</strong>Accurate cost breakdowns for labour and materials in seconds.</p>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <p><strong>UK Market Pricing</strong>All prices based on current UK rates — not outdated averages.</p>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <p><strong>Post Your Job for Free</strong>Let verified tradespeople come to you with competitive quotes.</p>
+          </li>
+          <li>
+            <div class="check">✓</div>
+            <p><strong>Just £2.99 Per Estimate</strong>Cheaper than a cup of coffee. No subscription needed.</p>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- FOR CUSTOMERS -->
-  <section class="customers" id="customers">
-    <div class="container">
-      <div class="split">
-        <div>
-          <div class="section-tag">For Customers</div>
-          <h2 class="section-title">Know what you should pay before you ask</h2>
-          <p class="section-sub">Stop guessing and avoid being overcharged. Get accurate estimates based on your specific job.</p>
-          <ul class="feature-list">
-            <li>
-              <div class="check">✓</div>
-              <p><strong>Instant AI-Powered Estimates</strong>Accurate cost breakdowns for labour and materials in seconds.</p>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <p><strong>UK Market Pricing</strong>All prices based on current UK rates — not outdated averages.</p>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <p><strong>Post Your Job</strong>Let verified tradespeople come to you with competitive quotes.</p>
-            </li>
-            <li>
-              <div class="check">✓</div>
-              <p><strong>Just £2.99 Per Estimate</strong>Cheaper than a cup of coffee. No subscription needed.</p>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <div class="mock-card">
-            <div class="mock-label">Your estimate</div>
-            <div class="mock-value">£1,200 – £1,800</div>
-            <div class="mock-range">3-bed house painting &amp; decorating</div>
-            <div class="mock-rows">
-              <div class="mock-row"><span>Labour (3 days)</span><span>£750 – £1,100</span></div>
-              <div class="mock-row"><span>Materials</span><span>£200 – £400</span></div>
-              <div class="mock-row"><span>Preparation</span><span>£150 – £300</span></div>
+      <div class="phone-card-wrapper">
+        <div class="phone-card">
+          <div class="phone-card-top">
+            <div class="phone-card-icon">🏠</div>
+            <div>
+              <div class="phone-card-brand"><span>Glossy</span>Quote</div>
+              <div style="font-size:0.72rem;color:#64748b;">Instant Estimate</div>
             </div>
           </div>
+          <div class="pc-label">Your estimate</div>
+          <div class="pc-value">£1,200–£1,800</div>
+          <div class="pc-range">3-bed house painting &amp; decorating</div>
+          <div class="pc-rows">
+            <div class="pc-row"><span>Labour (3 days)</span><span>£750–£1,100</span></div>
+            <div class="pc-row"><span>Materials</span><span>£200–£400</span></div>
+            <div class="pc-row"><span>Preparation</span><span>£150–£300</span></div>
+          </div>
+          <div class="pc-badge">✓ &nbsp;UK market rates · Updated 2026</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOR PROFESSIONALS -->
-  <section class="professionals" id="professionals">
-    <div class="container">
-      <div class="section-tag">For Professionals</div>
-      <h2 class="section-title">Grow your trade business with quality leads</h2>
-      <p class="section-sub">Connect with customers who already know what they want and are ready to hire.</p>
-      <div class="pro-cards">
-        <div class="pro-card">
-          <div class="icon">🎯</div>
-          <h3>Targeted Leads</h3>
-          <p>Get leads for your specific trade in your local area. No wasted time.</p>
-        </div>
-        <div class="pro-card">
-          <div class="icon">💰</div>
-          <h3>Credit System</h3>
-          <p>Buy credits and only pay for the leads you want. Full control over your spend.</p>
-        </div>
-        <div class="pro-card">
-          <div class="icon">⭐</div>
-          <h3>Build Reputation</h3>
-          <p>Collect verified reviews and showcase your portfolio to win more jobs.</p>
-        </div>
-        <div class="pro-card">
-          <div class="icon">📊</div>
-          <h3>Performance Dashboard</h3>
-          <p>Track your leads, conversion rate, ROI, and top performing areas.</p>
-        </div>
-        <div class="pro-card">
-          <div class="icon">🗺️</div>
-          <h3>Lead Map</h3>
-          <p>See demand across your area — go where the work is.</p>
-        </div>
-        <div class="pro-card">
-          <div class="icon">👑</div>
-          <h3>Premium Subscription</h3>
-          <p>£49/month. 60 credits included + 33% cheaper leads.</p>
-        </div>
+<!-- ── FOR PROFESSIONALS ── -->
+<section class="professionals" id="professionals">
+  <div class="container">
+    <div class="section-tag">For Professionals</div>
+    <h2 class="section-title">Grow your trade business with quality leads</h2>
+    <p class="section-sub">Connect with customers who already know what they want and are ready to hire.</p>
+    <div class="pro-cards">
+      <div class="pro-card">
+        <div class="icon">🎯</div>
+        <h3>Targeted Leads</h3>
+        <p>Get leads for your specific trade in your local area. No wasted time on the wrong jobs.</p>
+      </div>
+      <div class="pro-card">
+        <div class="icon">💰</div>
+        <h3>Credit System</h3>
+        <p>Buy credits and only pay for the leads you want. Full control over your spend.</p>
+      </div>
+      <div class="pro-card">
+        <div class="icon">⭐</div>
+        <h3>Build Reputation</h3>
+        <p>Collect verified reviews and showcase your portfolio to win more jobs.</p>
+      </div>
+      <div class="pro-card">
+        <div class="icon">📊</div>
+        <h3>Performance Dashboard</h3>
+        <p>Track your leads, conversion rate, ROI, and top performing areas.</p>
+      </div>
+      <div class="pro-card">
+        <div class="icon">🗺️</div>
+        <h3>Lead Map</h3>
+        <p>See demand across your area — go where the work is.</p>
+      </div>
+      <div class="pro-card">
+        <div class="icon">👑</div>
+        <h3>Premium Subscription</h3>
+        <p>£49/month with 7-day free trial. 60 credits + 33% cheaper leads.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="container">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Simple, transparent pricing</h2>
-      <p class="section-sub">No hidden fees. Pay only for what you need.</p>
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>Customer Estimate</h3>
-          <div class="price">£2.99 <span>one-time</span></div>
-          <p class="pricing-desc">Get an instant estimate for any job.</p>
-          <ul class="pricing-items">
-            <li>Full cost breakdown</li>
-            <li>Labour &amp; materials</li>
-            <li>UK market rates</li>
-            <li>All trades covered</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>Starter Credits</h3>
-          <div class="price">£35 <span>28 credits</span></div>
-          <p class="pricing-desc">Perfect for tradespeople starting out.</p>
-          <ul class="pricing-items">
-            <li>28 lead credits</li>
-            <li>Local area targeting</li>
-            <li>Basic dashboard</li>
-            <li>No subscription</li>
-          </ul>
-        </div>
-        <div class="pricing-card featured">
-          <div class="featured-badge">Most Popular</div>
-          <h3>Premium Monthly</h3>
-          <div class="price">£49 <span>/month</span></div>
-          <p class="pricing-desc">For serious tradespeople growing their business.</p>
-          <ul class="pricing-items">
-            <li>60 credits per month</li>
-            <li>33% cheaper leads</li>
-            <li>7-day free trial</li>
-            <li>Full performance dashboard</li>
-            <li>Priority support</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>Premium Annual</h3>
-          <div class="price">£490 <span>/year</span></div>
-          <p class="pricing-desc">Save £98 compared to monthly.</p>
-          <ul class="pricing-items">
-            <li>60 credits per month</li>
-            <li>33% cheaper leads</li>
-            <li>2 months free</li>
-            <li>Full dashboard access</li>
-            <li>Priority support</li>
-          </ul>
-        </div>
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p class="section-sub">No hidden fees. Pay only for what you need. All prices in GBP.</p>
+
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" onclick="switchTab('subscriptions', this)">Subscriptions</button>
+      <button class="pricing-tab" onclick="switchTab('credits', this)">Credit Packs</button>
+      <button class="pricing-tab" onclick="switchTab('customers', this)">For Customers</button>
+    </div>
+
+    <!-- SUBSCRIPTIONS TAB -->
+    <div class="pricing-section active" id="tab-subscriptions">
+      <div class="pricing-card">
+        <h3>Premium Monthly</h3>
+        <div class="price"><sup>£</sup>49</div>
+        <div class="price-meta">per month · 7-day free trial</div>
+        <p class="pricing-desc">For serious tradespeople growing their business. Start free today.</p>
+        <ul class="pricing-items">
+          <li>60 credits per month</li>
+          <li>33% cheaper leads</li>
+          <li>7-day free trial</li>
+          <li>Full performance dashboard</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary" onclick="checkout('monthly', this)">Start Free Trial</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="featured-badge">Best Value — Save £98</div>
+        <h3>Premium Annual</h3>
+        <div class="price"><sup>£</sup>490</div>
+        <div class="price-meta">per year · 2 months free</div>
+        <p class="pricing-desc">The smartest choice for established tradespeople.</p>
+        <ul class="pricing-items">
+          <li>720 credits per year</li>
+          <li>33% cheaper leads</li>
+          <li>2 months free vs monthly</li>
+          <li>Full dashboard access</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary" onclick="checkout('annual', this)">Get Annual Plan</button>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-tag" style="color:#93c5fd;">Get in Touch</div>
-      <h2 class="section-title">We're here to help</h2>
-      <p class="section-sub">Have a question? Our friendly support team responds within 24 hours.</p>
-      <div class="contact-cards">
-        <div class="contact-card">
-          <div class="icon">📧</div>
-          <h3>Email</h3>
-          <a href="mailto:glossyquote@gmail.com">glossyquote@gmail.com</a>
-          <p>We reply within 24 hours</p>
-        </div>
-        <div class="contact-card">
-          <div class="icon">📞</div>
-          <h3>Phone</h3>
-          <a href="tel:07378825257">07378 825257</a>
-          <p>Call or text anytime</p>
-        </div>
-        <div class="contact-card">
-          <div class="icon">💬</div>
-          <h3>WhatsApp</h3>
-          <a href="https://wa.me/447378825257">07378 825257</a>
-          <p>Quick replies on WhatsApp</p>
-        </div>
+    <!-- CREDIT PACKS TAB -->
+    <div class="pricing-section" id="tab-credits">
+      <div class="pricing-card">
+        <h3>Trial Pack</h3>
+        <div class="price"><sup>£</sup>15</div>
+        <div class="price-meta">one-time · 10 credits</div>
+        <p class="pricing-desc">Try the platform risk-free before committing.</p>
+        <ul class="pricing-items">
+          <li>10 lead credits</li>
+          <li>All trades</li>
+          <li>Local targeting</li>
+          <li>No subscription required</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('trial_pack', this)">Buy Trial Pack</button>
       </div>
-      <p class="hours">Support hours: Mon–Fri 9am–6pm &nbsp;|&nbsp; Sat 10am–4pm &nbsp;|&nbsp; Sunday Closed</p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">GlossyQuote</div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="privacy-choices.html">Privacy Choices</a>
-        <a href="#contact">Contact</a>
+      <div class="pricing-card">
+        <h3>Starter Pack</h3>
+        <div class="price"><sup>£</sup>35</div>
+        <div class="price-meta">one-time · 28 credits</div>
+        <p class="pricing-desc">Perfect for tradespeople just starting out.</p>
+        <ul class="pricing-items">
+          <li>28 lead credits</li>
+          <li>Local area targeting</li>
+          <li>Dashboard access</li>
+          <li>No subscription</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('starter_pack', this)">Buy Starter Pack</button>
       </div>
-      <p>&copy; 2026 GlossyQuote. All rights reserved. Registered in England &amp; Wales.</p>
-      <p style="margin-top:8px;">GlossyQuote is a trading name. All prices are estimates only and may vary based on location and job specifics.</p>
+      <div class="pricing-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <h3>Professional Pack</h3>
+        <div class="price"><sup>£</sup>50</div>
+        <div class="price-meta">one-time · 46 credits</div>
+        <p class="pricing-desc">Great value for active tradespeople.</p>
+        <ul class="pricing-items">
+          <li>46 lead credits</li>
+          <li>Priority listing</li>
+          <li>Full analytics</li>
+          <li>No subscription</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary" onclick="checkout('professional_pack', this)">Buy Professional Pack</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Business Pack</h3>
+        <div class="price"><sup>£</sup>99</div>
+        <div class="price-meta">one-time · 100 credits</div>
+        <p class="pricing-desc">For busy trade businesses with steady lead flow.</p>
+        <ul class="pricing-items">
+          <li>100 lead credits</li>
+          <li>All features included</li>
+          <li>Full analytics</li>
+          <li>No expiry</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('business_pack', this)">Buy Business Pack</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Premium Pack</h3>
+        <div class="price"><sup>£</sup>169</div>
+        <div class="price-meta">one-time · 200 credits</div>
+        <p class="pricing-desc">Maximum credits at the lowest cost per lead.</p>
+        <ul class="pricing-items">
+          <li>200 lead credits</li>
+          <li>Best value per credit</li>
+          <li>All features included</li>
+          <li>No expiry</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('premium_pack', this)">Buy Premium Pack</button>
+      </div>
     </div>
-  </footer>
 
+    <!-- CUSTOMERS TAB -->
+    <div class="pricing-section" id="tab-customers">
+      <div class="pricing-card featured" style="max-width:400px;margin:0 auto;">
+        <h3>Customer Estimate</h3>
+        <div class="price"><sup>£</sup>2.99</div>
+        <div class="price-meta">one-time per estimate</div>
+        <p class="pricing-desc">Get a full professional cost breakdown for any home improvement job.</p>
+        <ul class="pricing-items">
+          <li>Full cost breakdown</li>
+          <li>Labour &amp; materials</li>
+          <li>Current UK market rates</li>
+          <li>All 10 trades covered</li>
+          <li>Instant delivery</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary" onclick="checkout('estimate', this)">Get Your Estimate</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ── -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-title">Why tradespeople and homeowners trust GlossyQuote</div>
+    <div class="trust-items">
+      <div class="trust-item"><span class="trust-dot"></span>Secure Stripe payments</div>
+      <div class="trust-item"><span class="trust-dot"></span>Registered in England &amp; Wales</div>
+      <div class="trust-item"><span class="trust-dot"></span>GDPR compliant</div>
+      <div class="trust-item"><span class="trust-dot"></span>Cancel subscriptions anytime</div>
+      <div class="trust-item"><span class="trust-dot"></span>4.9★ App Store rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-tag" style="color:#86efac;">Get in Touch</div>
+    <h2 class="section-title">We're here to help</h2>
+    <p class="section-sub">Have a question? Our friendly support team responds within 24 hours.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">📧</div>
+        <h3>Email</h3>
+        <a href="mailto:glossyquote@gmail.com">glossyquote@gmail.com</a>
+        <p>We reply within 24 hours</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h3>Phone</h3>
+        <a href="tel:07378825257">07378 825257</a>
+        <p>Call or text anytime</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp</h3>
+        <a href="https://wa.me/447378825257">07378 825257</a>
+        <p>Quick replies on WhatsApp</p>
+      </div>
+    </div>
+    <p class="hours">Support hours: Mon–Fri 9am–6pm &nbsp;|&nbsp; Sat 10am–4pm &nbsp;|&nbsp; Sunday Closed</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="/glossy-icon.jpg" alt="GlossyQuote" />
+      GlossyQuote
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy-choices.html">Privacy Choices</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>&copy; 2026 GlossyQuote. All rights reserved. Registered in England &amp; Wales.</p>
+    <p style="margin-top:8px;opacity:0.6;">GlossyQuote is a trading name. All prices are estimates only and may vary based on location and job specifics.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Stripe checkout config ──────────────────────────────────────────
+  const BACKEND_URL = 'https://preview-btdatskhuneq.dev.vibecode.run';
+
+  function showToast(msg, type = '') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = type ? `show ${type}` : 'show';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => { t.className = ''; }, 4000);
+  }
+
+  async function checkout(productId, btn) {
+    const origText = btn.innerHTML;
+    btn.innerHTML = '<span class="spinner"></span>Redirecting…';
+    btn.disabled = true;
+
+    try {
+      const successUrl = window.location.origin + window.location.pathname + '?payment=success';
+      const cancelUrl  = window.location.origin + window.location.pathname + '?payment=cancelled';
+
+      const res = await fetch(`${BACKEND_URL}/api/stripe/checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId, successUrl, cancelUrl }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Server error ${res.status}`);
+      }
+
+      const { url } = await res.json();
+      if (!url) throw new Error('No checkout URL returned');
+      window.location.href = url;
+    } catch (err) {
+      showToast('⚠️ ' + (err.message || 'Something went wrong. Please try again.'), 'error');
+      btn.innerHTML = origText;
+      btn.disabled = false;
+    }
+  }
+
+  // ── Pricing tabs ────────────────────────────────────────────────────
+  function switchTab(name, el) {
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pricing-section').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+  }
+
+  // ── Payment return feedback ─────────────────────────────────────────
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('payment') === 'success') showToast('✅ Payment successful! Check your email for confirmation.', 'success');
+    if (params.get('payment') === 'cancelled') showToast('Payment cancelled — no charge was made.', '');
+  })();
+
+  // ── Service Worker ──────────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+</script>
 </body>
 </html>
