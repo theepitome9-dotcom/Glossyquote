@@ -160,7 +160,7 @@
     .stat-number { font-size: 2.2rem; font-weight: 900; line-height: 1; }
     .stat-label { font-size: 0.82rem; opacity: 0.7; margin-top: 5px; font-weight: 500; letter-spacing: 0.3px; }
 
-    /* ── TRADES RIBBON ── */
+    /* ── QUICK QUOTE TRADES RIBBON ── */
     .trades {
       background: #f0fdf4;
       padding: 20px 28px;
@@ -169,17 +169,26 @@
     }
     .trades p { font-size: 0.78rem; color: #6b7280; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px; font-weight: 600; }
     .trades-list { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .trade-chip-note { font-size: 0.75rem; color: #94a3b8; margin-top: 10px; }
     .trade-chip {
       background: #fff;
-      border: 1.5px solid #bbf7d0;
-      color: #15803d;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      transition: background .15s, border-color .15s;
+      border: 2px solid #d4960a;
+      color: #92600a;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, transform .15s, box-shadow .15s;
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .trade-chip:hover { background: #dcfce7; border-color: #22c55e; }
+    .trade-chip:hover {
+      background: linear-gradient(135deg, #d4960a, #f5c518);
+      color: #000;
+      border-color: #d4960a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(212,150,10,0.3);
+    }
 
     /* ── SECTIONS ── */
     section { padding: 88px 28px; }
@@ -649,21 +658,17 @@
   </div>
 </section>
 
-<!-- ── TRADES RIBBON ── -->
+<!-- ── QUICK QUOTE TRADES RIBBON ── -->
 <div class="trades">
-  <p>10 Trades We Cover</p>
+  <p>⚡ Quick Quote — tap a trade to get an instant estimate</p>
   <div class="trades-list">
-    <span class="trade-chip">🖌️ Painting &amp; Decorating</span>
-    <span class="trade-chip">🏗️ Plastering</span>
-    <span class="trade-chip">🪵 Flooring</span>
-    <span class="trade-chip">🔧 Plumbing</span>
-    <span class="trade-chip">⚡ Electrical</span>
-    <span class="trade-chip">🔲 Tiling</span>
-    <span class="trade-chip">🪚 Carpentry</span>
-    <span class="trade-chip">🍳 Kitchen Fitting</span>
-    <span class="trade-chip">🛁 Bathroom Fitting</span>
-    <span class="trade-chip">🔨 Handyman</span>
+    <button class="trade-chip" onclick="tradeCheckout('Painting &amp; Decorating', this)">🖌️ Painting &amp; Decorating</button>
+    <button class="trade-chip" onclick="tradeCheckout('Plastering', this)">🏗️ Plastering</button>
+    <button class="trade-chip" onclick="tradeCheckout('Flooring', this)">🪵 Flooring</button>
+    <button class="trade-chip" onclick="tradeCheckout('Tiling', this)">🔲 Tiling</button>
+    <button class="trade-chip" onclick="tradeCheckout('Kitchen Fitting', this)">🍳 Kitchen Fitting</button>
   </div>
+  <p class="trade-chip-note">Customers can post projects for all trades — Quick Quote instant estimates are available for the 5 trades above</p>
 </div>
 
 <!-- ── QUICK QUOTE SPOTLIGHT ── -->
@@ -748,7 +753,7 @@
         <ul class="feature-list">
           <li>
             <div class="check">✓</div>
-            <p><strong>Instant AI-Powered Estimates</strong>Accurate cost breakdowns for labour and materials in seconds.</p>
+            <p><strong>Instant Estimate</strong>Accurate cost breakdowns for labour and materials in seconds.</p>
           </li>
           <li>
             <div class="check">✓</div>
@@ -1136,7 +1141,11 @@
     t._timer = setTimeout(() => { t.className = ''; }, 4000);
   }
 
-  async function checkout(productId, btn) {
+  function tradeCheckout(trade, btn) {
+    checkout('estimate', btn, trade);
+  }
+
+  async function checkout(productId, btn, tradeLabel) {
     const origText = btn.innerHTML;
     btn.innerHTML = '<span class="spinner"></span>Redirecting…';
     btn.disabled = true;
@@ -1145,10 +1154,13 @@
       const successUrl = window.location.origin + window.location.pathname + '?payment=success';
       const cancelUrl  = window.location.origin + window.location.pathname + '?payment=cancelled';
 
+      const body = { productId, successUrl, cancelUrl };
+      if (tradeLabel) body.tradeLabel = tradeLabel;
+
       const res = await fetch(`${BACKEND_URL}/api/stripe/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, successUrl, cancelUrl }),
+        body: JSON.stringify(body),
       });
 
       if (!res.ok) {
