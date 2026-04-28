@@ -275,6 +275,50 @@
       font-size: 0.78rem; font-weight: 700; margin-top: 16px;
     }
 
+    /* ── TRADES GRID PANEL ── */
+    .trades-grid-panel {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .tgp-title {
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: #64748b;
+    }
+    .trades-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .trade-tile {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 18px 10px;
+      background: #fff; border: 2px solid #e2e8f0; border-radius: 16px;
+      text-decoration: none; text-align: center;
+      transition: border-color .2s, transform .15s, box-shadow .2s;
+      cursor: pointer;
+    }
+    .trade-tile:hover { border-color: #22c55e; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(34,197,94,0.12); }
+    .trade-tile-icon { font-size: 2rem; }
+    .trade-tile-name { font-size: 0.8rem; font-weight: 700; color: #0f172a; line-height: 1.3; }
+    .trade-tile-more { border-style: dashed; border-color: #cbd5e1; }
+    .trade-tile-more .trade-tile-name { color: #64748b; }
+    .cust-ctas { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .btn-qq-cust {
+      display: block; text-align: center; text-decoration: none;
+      background: linear-gradient(135deg, #d4960a, #f5c518);
+      color: #000; font-weight: 800; font-size: 1.05rem;
+      padding: 16px 24px; border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(212,150,10,0.3);
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-qq-cust:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-post-proj {
+      display: block; text-align: center; text-decoration: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff; font-weight: 800; font-size: 1.05rem;
+      padding: 16px 24px; border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(34,197,94,0.25);
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-post-proj:hover { opacity: 0.9; transform: translateY(-2px); }
+
     /* ── FOR PROFESSIONALS ── */
     .professionals { background: #fff; }
     .pro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-top: 52px; }
@@ -712,7 +756,7 @@
           </li>
           <li>
             <div class="check">✓</div>
-            <p><strong>Post Your Job for Free</strong>Let verified tradespeople come to you with competitive quotes.</p>
+            <p><strong>Post Your Project for Free</strong>Let verified tradespeople come to you with competitive quotes.</p>
           </li>
           <li>
             <div class="check">✓</div>
@@ -720,24 +764,37 @@
           </li>
         </ul>
       </div>
-      <div class="phone-card-wrapper">
-        <div class="phone-card">
-          <div class="phone-card-top">
-            <div class="phone-card-icon">🏠</div>
-            <div>
-              <div class="phone-card-brand"><span>Glossy</span>Quote</div>
-              <div style="font-size:0.72rem;color:#64748b;">Instant Estimate</div>
-            </div>
-          </div>
-          <div class="pc-label">Your estimate</div>
-          <div class="pc-value">£1,200–£1,800</div>
-          <div class="pc-range">3-bed house painting &amp; decorating</div>
-          <div class="pc-rows">
-            <div class="pc-row"><span>Labour (3 days)</span><span>£750–£1,100</span></div>
-            <div class="pc-row"><span>Materials</span><span>£200–£400</span></div>
-            <div class="pc-row"><span>Preparation</span><span>£150–£300</span></div>
-          </div>
-          <div class="pc-badge">✓ &nbsp;UK market rates · Updated 2026</div>
+      <div class="trades-grid-panel">
+        <div class="tgp-title">Quick Quote available for:</div>
+        <div class="trades-grid">
+          <a href="#pricing" class="trade-tile">
+            <span class="trade-tile-icon">🖌️</span>
+            <span class="trade-tile-name">Painting &amp;<br>Decorating</span>
+          </a>
+          <a href="#pricing" class="trade-tile">
+            <span class="trade-tile-icon">🏗️</span>
+            <span class="trade-tile-name">Plastering</span>
+          </a>
+          <a href="#pricing" class="trade-tile">
+            <span class="trade-tile-icon">🪵</span>
+            <span class="trade-tile-name">Flooring</span>
+          </a>
+          <a href="#pricing" class="trade-tile">
+            <span class="trade-tile-icon">🍳</span>
+            <span class="trade-tile-name">Kitchen<br>Fitting</span>
+          </a>
+          <a href="#pricing" class="trade-tile">
+            <span class="trade-tile-icon">🔲</span>
+            <span class="trade-tile-name">Tiling</span>
+          </a>
+          <a href="#pricing" class="trade-tile trade-tile-more">
+            <span class="trade-tile-icon">➕</span>
+            <span class="trade-tile-name">5 more<br>trades</span>
+          </a>
+        </div>
+        <div class="cust-ctas">
+          <a href="#pricing" class="btn-qq-cust">⚡ Get a Quick Quote — £2.99</a>
+          <a href="https://apps.apple.com/gb/app/glossyquote/id6741984340" target="_blank" rel="noopener" class="btn-post-proj">📋 Post Your Project Free</a>
         </div>
       </div>
     </div>
