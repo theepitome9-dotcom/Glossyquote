@@ -290,6 +290,109 @@
     .pro-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; color: #0f172a; }
     .pro-card p { font-size: 0.88rem; color: #64748b; line-height: 1.6; }
 
+    /* ── QUICK QUOTE SPOTLIGHT ── */
+    .qq-section {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%);
+      padding: 80px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .qq-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(212,150,10,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .qq-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4960a, #f5c518);
+      color: #000;
+      font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 22px;
+    }
+    .qq-title {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900; line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffe066 0%, #f5c518 30%, #d4960a 60%, #f5c518 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .qq-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.7);
+      max-width: 560px; margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+    .qq-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; max-width: 960px; margin: 0 auto 48px;
+    }
+    .qq-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,150,10,0.25);
+      border-radius: 18px;
+      padding: 28px 22px;
+      text-align: left;
+      transition: border-color .2s, transform .2s;
+    }
+    .qq-card:hover { border-color: rgba(212,150,10,0.6); transform: translateY(-3px); }
+    .qq-card-icon { font-size: 2rem; margin-bottom: 14px; }
+    .qq-card-title { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .qq-card-desc { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .qq-price-strip {
+      display: inline-flex; align-items: center; gap: 18px;
+      background: rgba(212,150,10,0.1);
+      border: 1.5px solid rgba(212,150,10,0.4);
+      border-radius: 50px;
+      padding: 14px 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .qq-price-strip .price-label { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+    .qq-price-strip .price-amount {
+      font-size: 1.9rem; font-weight: 900;
+      background: linear-gradient(180deg, #ffe066, #d4960a);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .qq-price-strip .price-divider { color: rgba(255,255,255,0.2); font-size: 1.4rem; }
+    .btn-qq {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4960a, #f5c518);
+      color: #000; font-weight: 800; font-size: 1rem;
+      padding: 14px 36px; border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(212,150,10,0.4);
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-qq:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* ── B2B PLAN CARDS ── */
+    .pricing-card.b2b-featured {
+      border-color: #d4960a;
+      box-shadow: 0 8px 32px rgba(212,150,10,0.2);
+      position: relative;
+    }
+    .b2b-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #d4960a, #f5c518);
+      color: #000; font-size: 0.75rem; font-weight: 800;
+      padding: 4px 16px; border-radius: 12px;
+      white-space: nowrap; letter-spacing: 0.5px;
+    }
+    .qq-count {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, rgba(212,150,10,0.12), rgba(212,150,10,0.06));
+      border: 1px solid rgba(212,150,10,0.3);
+      color: #b8860b; font-size: 0.82rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 12px;
+      margin-bottom: 12px;
+    }
+
     /* ── PRICING ── */
     .pricing { background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%); }
     .pricing-tabs { display: flex; gap: 8px; margin-bottom: 40px; margin-top: 48px; justify-content: center; flex-wrap: wrap; }
@@ -469,8 +572,8 @@
     <span class="nav-logo-text">GlossyQuote</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#quick-quote" style="color:#b8860b;font-weight:700;">⚡ Quick Quote</a></li>
     <li><a href="#how">How It Works</a></li>
-    <li><a href="#customers">For Customers</a></li>
     <li><a href="#professionals">For Pros</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -496,7 +599,7 @@
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-number">10+</div><div class="stat-label">Trades Covered</div></div>
-    <div class="stat"><div class="stat-number">£2.99</div><div class="stat-label">Per Estimate</div></div>
+    <div class="stat"><div class="stat-number">£2.99</div><div class="stat-label">Per Quick Quote</div></div>
     <div class="stat"><div class="stat-number">60s</div><div class="stat-label">Avg. Response Time</div></div>
     <div class="stat"><div class="stat-number">4.9★</div><div class="stat-label">App Store Rating</div></div>
   </div>
@@ -518,6 +621,48 @@
     <span class="trade-chip">🔨 Handyman</span>
   </div>
 </div>
+
+<!-- ── QUICK QUOTE SPOTLIGHT ── -->
+<section class="qq-section" id="quick-quote">
+  <div class="qq-tag">⚡ Quick Quote</div>
+  <h2 class="qq-title">One Tap.<br>Instant Trade Estimate.</h2>
+  <p class="qq-sub">The Quick Quote engine delivers a professional, AI-powered cost breakdown in under 60 seconds — no phone calls, no waiting, no guesswork.</p>
+
+  <div class="qq-cards">
+    <div class="qq-card">
+      <div class="qq-card-icon">🏠</div>
+      <div class="qq-card-title">Describe the Job</div>
+      <div class="qq-card-desc">Select the trade, enter your room size or package type. Takes under 60 seconds on any device.</div>
+    </div>
+    <div class="qq-card">
+      <div class="qq-card-icon">⚡</div>
+      <div class="qq-card-title">Get Your Quick Quote</div>
+      <div class="qq-card-desc">Our AI engine analyses live UK market rates and generates a full cost breakdown instantly.</div>
+    </div>
+    <div class="qq-card">
+      <div class="qq-card-icon">📋</div>
+      <div class="qq-card-title">Labour, Materials &amp; Total</div>
+      <div class="qq-card-desc">Every Quick Quote includes a detailed split of labour, materials, and total project cost.</div>
+    </div>
+    <div class="qq-card">
+      <div class="qq-card-icon">🤝</div>
+      <div class="qq-card-title">Connect with Pros</div>
+      <div class="qq-card-desc">Share your Quick Quote with vetted local tradespeople who compete for your job.</div>
+    </div>
+  </div>
+
+  <div class="qq-price-strip">
+    <span class="price-label">Homeowners pay just</span>
+    <span class="price-amount">£2.99</span>
+    <span class="price-divider">|</span>
+    <span class="price-label">B2B plans from</span>
+    <span class="price-amount">£19.99<span style="font-size:1rem;opacity:0.8">/mo</span></span>
+    <span class="price-divider">|</span>
+    <span class="price-label">Estate agents &amp; property managers</span>
+  </div>
+
+  <a href="#pricing" class="btn-qq">View All Quick Quote Plans</a>
+</section>
 
 <!-- ── HOW IT WORKS ── -->
 <section class="how" id="how">
@@ -648,8 +793,9 @@
     <p class="section-sub">No hidden fees. Pay only for what you need. All prices in GBP.</p>
 
     <div class="pricing-tabs">
-      <button class="pricing-tab active" onclick="switchTab('subscriptions', this)">Subscriptions</button>
+      <button class="pricing-tab active" onclick="switchTab('subscriptions', this)">Trade Subscriptions</button>
       <button class="pricing-tab" onclick="switchTab('credits', this)">Credit Packs</button>
+      <button class="pricing-tab" onclick="switchTab('b2b', this)" style="background:linear-gradient(135deg,#d4960a,#f5c518);border-color:#d4960a;color:#000;font-weight:800;">⚡ B2B Quick Quote Plans</button>
       <button class="pricing-tab" onclick="switchTab('customers', this)">For Customers</button>
     </div>
 
@@ -754,6 +900,88 @@
         </ul>
         <button class="btn-pricing btn-pricing-secondary" onclick="checkout('premium_pack', this)">Buy Premium Pack</button>
       </div>
+    </div>
+
+    <!-- B2B QUICK QUOTE TAB -->
+    <div class="pricing-section" id="tab-b2b">
+      <div style="grid-column:1/-1;text-align:center;margin-bottom:8px;">
+        <p style="font-size:0.95rem;color:#64748b;max-width:600px;margin:0 auto;">
+          Perfect for <strong>estate agents, letting agencies, property managers &amp; landlords</strong> who regularly need trade cost estimates. All plans include unlimited access to Quick Quote on any device.
+        </p>
+      </div>
+
+      <!-- Pay Per Quote -->
+      <div class="pricing-card">
+        <h3>Pay Per Quote</h3>
+        <div class="price"><sup>£</sup>2.99</div>
+        <div class="price-meta">per Quick Quote · no commitment</div>
+        <div class="qq-count">⚡ 1 Quick Quote</div>
+        <p class="pricing-desc">Ideal for one-off jobs. Get an instant professional estimate whenever you need it.</p>
+        <ul class="pricing-items">
+          <li>1 full Quick Quote</li>
+          <li>Labour &amp; materials breakdown</li>
+          <li>All 10 trades covered</li>
+          <li>Instant PDF summary</li>
+          <li>No subscription needed</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('estimate', this)">Get a Quick Quote</button>
+      </div>
+
+      <!-- Landlord Plan -->
+      <div class="pricing-card">
+        <h3>Landlord Plan</h3>
+        <div class="price"><sup>£</sup>19.99</div>
+        <div class="price-meta">per month · cancel anytime</div>
+        <div class="qq-count">⚡ 10 Quick Quotes / month</div>
+        <p class="pricing-desc">For small landlords and property investors who need regular trade estimates without the hassle.</p>
+        <ul class="pricing-items">
+          <li>10 Quick Quotes per month</li>
+          <li>All 10 trades covered</li>
+          <li>Quote history &amp; archive</li>
+          <li>Email delivery of quotes</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="checkout('monthly', this)">Start Landlord Plan</button>
+      </div>
+
+      <!-- Agency Plan -->
+      <div class="pricing-card b2b-featured" style="position:relative;">
+        <div class="b2b-badge">Most Popular for Agents</div>
+        <h3>Agency Plan</h3>
+        <div class="price"><sup>£</sup>49.99</div>
+        <div class="price-meta">per month · cancel anytime</div>
+        <div class="qq-count">⚡ 30 Quick Quotes / month</div>
+        <p class="pricing-desc">Built for letting agencies and property managers handling multiple properties and maintenance queries.</p>
+        <ul class="pricing-items">
+          <li>30 Quick Quotes per month</li>
+          <li>All 10 trades covered</li>
+          <li>Team access (up to 3 users)</li>
+          <li>Branded PDF quotes</li>
+          <li>Quote history &amp; archive</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-primary" style="background:linear-gradient(135deg,#d4960a,#f5c518);color:#000;box-shadow:0 2px 12px rgba(212,150,10,0.3);" onclick="checkout('monthly', this)">Start Agency Plan</button>
+      </div>
+
+      <!-- Enterprise Plan -->
+      <div class="pricing-card">
+        <h3>Enterprise Plan</h3>
+        <div class="price"><sup>£</sup>99</div>
+        <div class="price-meta">per month · bespoke contracts available</div>
+        <div class="qq-count">⚡ Unlimited Quick Quotes</div>
+        <p class="pricing-desc">For large property companies, housing associations and high-volume portfolios needing unlimited estimates.</p>
+        <ul class="pricing-items">
+          <li>Unlimited Quick Quotes</li>
+          <li>All 10 trades covered</li>
+          <li>Unlimited team users</li>
+          <li>White-label PDF quotes</li>
+          <li>API access available</li>
+          <li>SLA &amp; dedicated support</li>
+          <li>Custom reporting</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-secondary" onclick="window.location='#contact'">Contact for Enterprise</button>
+      </div>
+
     </div>
 
     <!-- CUSTOMERS TAB -->
