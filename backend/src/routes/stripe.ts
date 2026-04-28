@@ -11,15 +11,22 @@ const getStripe = () => {
 };
 
 // Product definitions — prices in pence (GBP)
-const PRODUCTS: Record<string, { name: string; amount: number; mode: "payment" | "subscription"; interval?: "month" | "year"; trialDays?: number }> = {
+const PRODUCTS: Record<string, { name: string; amount: number; mode: "payment" | "subscription"; interval?: "month" | "year"; trialDays?: number; stripeProductId?: string; stripePriceId?: string }> = {
+  // Trade subscriptions
   monthly:           { name: "Premium Monthly — 60 credits/month", amount: 4900,  mode: "subscription", interval: "month", trialDays: 7 },
   annual:            { name: "Premium Annual — 720 credits/year",  amount: 49000, mode: "subscription", interval: "year" },
+  // Credit packs
   trial_pack:        { name: "Trial Pack — 10 Credits",            amount: 1500,  mode: "payment" },
   starter_pack:      { name: "Starter Pack — 28 Credits",          amount: 3500,  mode: "payment" },
   professional_pack: { name: "Professional Pack — 46 Credits",     amount: 5000,  mode: "payment" },
   business_pack:     { name: "Business Pack — 100 Credits",        amount: 9900,  mode: "payment" },
   premium_pack:      { name: "Premium Pack — 200 Credits",         amount: 16900, mode: "payment" },
-  estimate:          { name: "Professional Estimate",              amount: 299,   mode: "payment" },
+  // Customer Quick Quote
+  estimate:          { name: "Quick Quote — Instant Trade Estimate", amount: 299,  mode: "payment" },
+  // B2B Quick Quote Plans
+  b2b_landlord:      { name: "Quick Quote — Landlord Plan (10/mo)",  amount: 1999, mode: "subscription", interval: "month", stripeProductId: "prod_UQ11cY3CwiMiue", stripePriceId: "price_1TRAzbGXvoI7tjT2u32S0QTD" },
+  b2b_agency:        { name: "Quick Quote — Agency Plan (30/mo)",    amount: 4999, mode: "subscription", interval: "month", stripeProductId: "prod_UQ118Rb7yuTZAl",  stripePriceId: "price_1TRAzbGXvoI7tjT2NgpSKkE5" },
+  b2b_enterprise:    { name: "Quick Quote — Enterprise Plan (Unlimited)", amount: 9900, mode: "subscription", interval: "month", stripeProductId: "prod_UQ11xSjNuLP8cf", stripePriceId: "price_1TRAzcGXvoI7tjT2Fw7ZOg5r" },
 };
 
 const checkoutSchema = z.object({
@@ -65,18 +72,22 @@ stripeRouter.post("/checkout", async (c) => {
     let session: Stripe.Checkout.Session;
 
     if (product.mode === "subscription") {
+      // Use pre-existing Stripe price ID for B2B plans, otherwise create inline
+      const lineItem = product.stripePriceId
+        ? { price: product.stripePriceId, quantity: 1 }
+        : {
+            price_data: {
+              currency: "gbp",
+              product_data: { name: product.name },
+              unit_amount: product.amount,
+              recurring: { interval: product.interval! },
+            },
+            quantity: 1,
+          };
       session = await stripe.checkout.sessions.create({
         mode: "subscription",
         currency: "gbp",
-        line_items: [{
-          price_data: {
-            currency: "gbp",
-            product_data: { name: product.name },
-            unit_amount: product.amount,
-            recurring: { interval: product.interval! },
-          },
-          quantity: 1,
-        }],
+        line_items: [lineItem],
         subscription_data: {
           trial_period_days: product.trialDays,
           metadata,
