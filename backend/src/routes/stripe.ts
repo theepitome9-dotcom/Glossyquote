@@ -35,6 +35,7 @@ const checkoutSchema = z.object({
   cancelUrl: z.string().url(),
   customerEmail: z.string().email().optional(),
   professionalId: z.string().optional(),
+  tradeLabel: z.string().max(80).optional(),
 });
 
 // GET /api/stripe/products
@@ -61,13 +62,19 @@ stripeRouter.post("/checkout", async (c) => {
       return c.json({ error: "Invalid request", details: parsed.error.flatten() }, 400);
     }
 
-    const { productId, successUrl, cancelUrl, customerEmail, professionalId } = parsed.data;
+    const { productId, successUrl, cancelUrl, customerEmail, professionalId, tradeLabel } = parsed.data;
     const product = PRODUCTS[productId];
     if (!product) return c.json({ error: "Unknown product" }, 400);
 
     const stripe = getStripe();
     const metadata: Record<string, string> = { productId };
     if (professionalId) metadata.professionalId = professionalId;
+    if (tradeLabel) metadata.tradeLabel = tradeLabel;
+
+    // For estimate product, suffix the trade name so it shows in Stripe checkout
+    const productName = (productId === "estimate" && tradeLabel)
+      ? `Quick Quote — ${tradeLabel}`
+      : product.name;
 
     let session: Stripe.Checkout.Session;
 
@@ -78,7 +85,7 @@ stripeRouter.post("/checkout", async (c) => {
         : {
             price_data: {
               currency: "gbp",
-              product_data: { name: product.name },
+              product_data: { name: productName },
               unit_amount: product.amount,
               recurring: { interval: product.interval! },
             },
@@ -104,7 +111,7 @@ stripeRouter.post("/checkout", async (c) => {
         line_items: [{
           price_data: {
             currency: "gbp",
-            product_data: { name: product.name },
+            product_data: { name: productName },
             unit_amount: product.amount,
           },
           quantity: 1,
